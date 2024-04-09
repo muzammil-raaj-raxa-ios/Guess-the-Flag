@@ -12,6 +12,10 @@ class ViewController: UIViewController {
   @IBOutlet weak var btn2: UIButton!
   @IBOutlet weak var btn3: UIButton!
   
+  @IBOutlet weak var img1: UIImageView!
+  @IBOutlet weak var img2: UIImageView!
+  @IBOutlet weak var img3: UIImageView!
+  
   var countries = [String]()
   var score = 0
   var correctAnswer = 0
@@ -20,15 +24,16 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us "]
+    countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
     
-    //    btn1.layer.borderWidth = 1
-    //    btn2.layer.borderWidth = 1
-    //    btn3.layer.borderWidth = 1
-    //
-    //    btn1.layer.borderColor = UIColor.lightGray.cgColor
-    //    btn2.layer.borderColor = UIColor.lightGray.cgColor
-    //    btn3.layer.borderColor = UIColor.lightGray.cgColor
+    btn1.setTitle("", for: .normal)
+    btn1.setTitleColor(.clear, for: .normal)
+    
+    btn2.setTitle("", for: .normal)
+    btn2.setTitleColor(.clear, for: .normal)
+    
+    btn3.setTitle("", for: .normal)
+    btn3.setTitleColor(.clear, for: .normal)
     
     askQuestion()
   }
@@ -37,11 +42,11 @@ class ViewController: UIViewController {
     countries.shuffle()
     correctAnswer = Int.random(in: 0...2)
     
-    btn1.setImage(UIImage(named: countries[0]), for: .normal)
-    btn2.setImage(UIImage(named: countries[1]), for: .normal)
-    btn3.setImage(UIImage(named: countries[2]), for: .normal)
+    img1.image = UIImage(named: countries[0])
+    img2.image = UIImage(named: countries[1])
+    img3.image = UIImage(named: countries[2])
     
-    var flagTitle = countries[correctAnswer].uppercased()
+    let flagTitle = countries[correctAnswer].uppercased()
     title = "Guess: \(flagTitle) Score: \(score)"
     
     questionAsked += 1
